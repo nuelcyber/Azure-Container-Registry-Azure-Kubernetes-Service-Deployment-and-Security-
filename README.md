@@ -1,4 +1,4 @@
-# Configuring and Securing Azure Container Registry (ACR) & Azure Kubernetes Service (AKS)
+# Azure Container Registry (ACR) & Azure Kubernetes Service (AKS) Deployment and Security 
 
 ## Project Overview
 

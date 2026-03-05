@@ -112,26 +112,26 @@ This project reflects real-world Cloud Security and DevSecOps implementation pra
 
 <p align="center"><strong>Figure 3: Access Keys for Azure Container Registry</strong></p>
 
-<p align="center"> <img src="images/ASK7.png" width="700" height="400">
+<p align="center"> <img src="images/AKS7.png" width="700" height="400">
 </p>
 
 ## Building and Pushing Image to ACR
 
 <p align="center"><strong>Figure 4: Building an Image from the Dockerfile</strong></p>
 
-<p align="center"> <img src="images/ASK3.png" width="700" height="400">
+<p align="center"> <img src="images/AKS3.png" width="700" height="400">
 </p>
 
 
 <p align="center"><strong>Figure 5: Pushing the Image to the Azure Container Registry </strong></p>
 
-<p align="center"> <img src="images/ASK4.png" width="700" height="400">
+<p align="center"> <img src="images/AKS4.png" width="700" height="400">
 </p>
 
 
 <p align="center"><strong>Figure 6: Container Image Stored in the Azure Container Registry </strong></p>
 
-<p align="center"> <img src="images/ASK5.png" width="700" height="400">
+<p align="center"> <img src="images/AKS5.png" width="700" height="400">
 </p>
 
 Image successfully stored as:
@@ -141,7 +141,7 @@ sample/nginx:v1
 
 <p align="center"><strong>Figure 7: Container Image Details Including SHA256 Digest and Manifest Creation Date </strong></p>
 
-<p align="center"> <img src="images/ASK6.png" width="700" height="400">
+<p align="center"> <img src="images/AKS6.png" width="700" height="400">
 </p>
    
 # Azure Kubernetes Service Cluster Deployment Configuration
@@ -155,7 +155,7 @@ sample/nginx:v1
 
 <p align="center"><strong>Figure 8:Successful Deployment of Azure Kubernetes Service (AKS) </strong></p>
 
-<p align="center"> <img src="images/ASK8.png" width="700" height="400">
+<p align="center"> <img src="images/AKS8.png" width="700" height="400">
 </p>
 
 ---

@@ -4,7 +4,7 @@
 
 This lab demonstrates the secure deployment and integration of **Azure Container Registry (ACR)** and **Azure Kubernetes Service (AKS)** in Microsoft Azure.
 
-The proof of concept showcases:
+This Lab showcases:
 
 - Building a container image using a Dockerfile
 - Storing container images securely in Azure Container Registry
@@ -15,13 +15,12 @@ The proof of concept showcases:
 
 This project reflects real-world Cloud Security and DevSecOps implementation practices used in enterprise cloud environments.
 
----
 
 # Solution Architecture
 
 ## Core Components Deployed
 
-- Resource Group: `AZ500LAB09`
+- Resource Group: AZ500LAB09
 - Azure Container Registry (Basic SKU)
 - Azure Kubernetes Service (Dev/Test preset)
 - Dockerfile (Nginx-based image)
@@ -29,7 +28,6 @@ This project reflects real-world Cloud Security and DevSecOps implementation pra
 - Internal Kubernetes Service (ClusterIP)
 - Managed Identity with Role Assignments
 
----
 
 ## Architecture Workflow
 
@@ -37,18 +35,17 @@ This project reflects real-world Cloud Security and DevSecOps implementation pra
 2. The image is built and securely pushed to Azure Container Registry.
 3. An AKS cluster is deployed in the East US region.
 4. The AKS managed identity is granted:
-   - `AcrPull` role on ACR
-   - `Contributor` role on the cluster virtual network
+   - AcrPull role on ACR
+   - Contributor role on the cluster virtual network
 5. An external Kubernetes service is deployed and exposed publicly.
 6. An internal Kubernetes service is deployed with private access only.
 7. Connectivity and security controls are validated.
 
----
 
 # Lab Objectives Achieved
 
 - Deploy Azure Container Registry
-- Build and push container images using Azure CLI
+- Build and push container images
 - Deploy Azure Kubernetes Service cluster
 - Implement RBAC between AKS and ACR
 - Deploy and validate:
@@ -56,14 +53,12 @@ This project reflects real-world Cloud Security and DevSecOps implementation pra
   - Internal ClusterIP service
 - Validate segmentation and secure access
 
----
 
 # Technologies & Services Used
 
 - Microsoft Azure
 - Azure Container Registry (ACR)
 - Azure Kubernetes Service (AKS)
-- Azure CLI
 - Kubernetes (kubectl)
 - Docker
 - Nginx
@@ -98,44 +93,70 @@ This project reflects real-world Cloud Security and DevSecOps implementation pra
 - Internal service validated from inside cluster
 - Isolation confirmed
 
----
 
 # Container Build Process
 
-## Dockerfile
+## Building an Azure Container Registry
 
-```dockerfile
-FROM nginx
-```
+<p align="center"><strong>Figure 1: Azure Resource Provider Registration </strong></p>
 
-## Build and Push Image to ACR
+<p align="center"> <img src="AKS1.png" width="700" height="400">
+</p>
 
-```bash
-ACRNAME=$(az acr list --resource-group AZ500LAB09 --query '[].{Name:name}' --output tsv)
 
-az acr build \
-  --resource-group AZ500LAB09 \
-  --image sample/nginx:v1 \
-  --registry $ACRNAME \
-  --file Dockerfile .
-```
+<p align="center"><strong>Figure 2: Creating a resource group and an Azure Container Registry (ACR) instance</strong></p>
+
+<p align="center"> <img src="images/AKS2.png" width="700" height="400">
+</p>
+
+
+<p align="center"><strong>Figure 3: Access Keys for Azure Container Registry</strong></p>
+
+<p align="center"> <img src="ASK7.png" width="700" height="400">
+</p>
+
+## Building and Pushing Image to ACR
+
+<p align="center"><strong>Figure 4: Building an Image from the Dockerfile</strong></p>
+
+<p align="center"> <img src="ASK3.png" width="700" height="400">
+</p>
+
+
+<p align="center"><strong>Figure 5: Pushing the Image to the Azure Container Registry </strong></p>
+
+<p align="center"> <img src="ASK4.png" width="700" height="400">
+</p>
+
+
+<p align="center"><strong>Figure 6: Container Image Stored in the Azure Container Registry </strong></p>
+
+<p align="center"> <img src="ASK5.png" width="700" height="400">
+</p>
 
 Image successfully stored as:
-
 ```
 sample/nginx:v1
 ```
 
----
+<p align="center"><strong>Figure 7: Container Image Details Including SHA256 Digest and Manifest Creation Date </strong></p>
 
-# AKS Cluster Deployment Configuration
+<p align="center"> <img src="ASK6.png" width="700" height="400">
+</p>
+   
+# Azure Kubernetes Service Cluster Deployment Configuration
 
 - Cluster Preset: Dev/Test
 - Networking: Azure CNI Overlay
 - Authentication: Local Accounts + Kubernetes RBAC
 - Pricing Tier: Free
 - Private Cluster: Disabled (Lab scenario)
-- Region: East US
+- Region: West US
+
+<p align="center"><strong>Figure 8:Successful Deployment of Azure Kubernetes Service (AKS) </strong></p>
+
+<p align="center"> <img src="ASK8.png" width="700" height="400">
+</p>
 
 ---
 

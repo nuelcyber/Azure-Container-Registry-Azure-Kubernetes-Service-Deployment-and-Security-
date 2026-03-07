@@ -153,12 +153,12 @@ sample/nginx:v1
 - Private Cluster: Disabled (Lab scenario)
 - Region: West US
 
-<p align="center"><strong>Figure 8:Successful Deployment of Azure Kubernetes Service (AKS) </strong></p>
+<p align="center"><strong>Figure 8: Successful Deployment of Azure Kubernetes Service (AKS) </strong></p>
 
 <p align="center"> <img src="images/AKS8.png" width="700" height="400">
 </p>
 
----
+
 
 ## Connect to AKS Cluster
 
@@ -174,8 +174,6 @@ Verify nodes:
 kubectl get nodes
 ```
 
----
-
 # Secure AKS to ACR Integration
 
 ## Attach ACR to AKS
@@ -187,15 +185,25 @@ az aks update \
   --attach-acr $ACRNAME
 ```
 
+<p align="center"><strong>Figure 9: AKS Cluster Connection with Azure Container Registry Integration </strong></p>
+
+<p align="center"> <img src="images/AKS9.png" width="700" height="400">
+</p>
+
+
 This grants the AKS managed identity the **AcrPull** role.
 
----
 
 # Service Deployment
 
 ## External Service Deployment
 
 Manifest: `nginxexternal.yaml`
+
+<p align="center"><strong>Figure 10: Editing the external yaml file </strong></p>
+
+<p align="center"> <img src="images/AKS10.png" width="700" height="400">
+</p>
 
 ```bash
 kubectl apply -f nginxexternal.yaml
@@ -207,20 +215,28 @@ Verify service:
 kubectl get service nginxexternal
 ```
 
+<p align="center"><strong>Figure 11: Verifying access to an externally AKS-hosted service </strong></p>
+
+<p align="center"> <img src="images/AKS11.png" width="700" height="400">
+</p>
+
 - Service Type: LoadBalancer
 - Public IP assigned
 - Accessible via browser
 - Displays: *Welcome to nginx!*
 
----
 
-## 🔐 Internal Service Deployment
+## Internal Service Deployment
 
 Manifest: `nginxinternal.yaml`
 
 ```bash
 kubectl apply -f nginxinternal.yaml
 ```
+<p align="center"><strong>Figure 12: Editing the internal yaml file </strong></p>
+
+<p align="center"> <img src="images/AKS12.png" width="700" height="400">
+</p>
 
 Verify service:
 
@@ -228,11 +244,15 @@ Verify service:
 kubectl get service nginxinternal
 ```
 
+<p align="center"><strong>Figure 13: Deploying an internal service to AKS </strong></p>
+
+<p align="center"> <img src="images/AKS13.png" width="700" height="400">
+</p>
+
 - Service Type: ClusterIP
 - Private IP only
 - Not accessible from internet
 
----
 
 ## Validate Internal Service from Pod
 
@@ -241,10 +261,14 @@ kubectl get pods
 kubectl exec -it <pod_name> -- /bin/bash
 curl http://<internal_IP>
 ```
+<p align="center"><strong>Figure 14: Verifying access to an internal AKS-hosted service </strong></p>
+
+<p align="center"> <img src="images/AKS14.png" width="700" height="400">
+</p>
 
 Result: Nginx page successfully returned internally.
 
----
+
 
 # Validation Summary
 
@@ -258,7 +282,7 @@ Result: Nginx page successfully returned internally.
 
 # Deployment Region
 
-East US
+West US
 
 # Real-World Enterprise Relevance
 
@@ -278,7 +302,6 @@ It demonstrates:
 - Cloud-native access control
 - Enterprise-grade AKS security configuration
 
----
 
 # Skills Demonstrated
 
@@ -291,7 +314,6 @@ It demonstrates:
 - Secure workload exposure design
 - Cloud-native security architecture
 
----
 
 
 
